@@ -1,17 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
-// import { addContacts } from '../../redux/contactsSlise';
+import { selectContacts } from 'redux/selectors';
 
 import { nanoid } from 'nanoid';
 import css from './ContactForm.module.css';
 import { toast } from 'react-toastify';
 
 import { Button } from 'components/Button/Button';
-import { fetchAddContact } from 'redux/operations';
+import { fetchAddContactThunks } from 'redux/thunks';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const { contacts } = useSelector(getContacts);
+  const { contacts } = useSelector(selectContacts);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -23,9 +22,8 @@ export const ContactForm = () => {
       return;
     }
     const number = form.elements.number.value.trim();
-    // const id = nanoid();
     const contact = { name, number };
-    dispatch(fetchAddContact(contact));
+    dispatch(fetchAddContactThunks(contact));
     form.reset();
   };
 

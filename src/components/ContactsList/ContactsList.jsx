@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Contact } from 'components/Contact/Contact';
-import { getContacts, getFilter } from '../../redux/selectors';
+import { selectContacts, selectFilter } from '../../redux/selectors';
 import css from './ContactsList.module.css';
 import { Message } from 'components/Message/Message';
-import { fetchContacts } from 'redux/operations';
 import { useEffect } from 'react';
+import { fetchContactsThunks } from 'redux/thunks';
 
 const getVisibleContacts = (contacts, query) => {
   const normalizedFilter = query.toLowerCase();
@@ -15,16 +15,13 @@ const getVisibleContacts = (contacts, query) => {
 
 export const ContactsList = () => {
   const dispatch = useDispatch();
-  // Отримуємо частини стану
-  // Викликаємо операцію
+
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(fetchContactsThunks());
   }, [dispatch]);
-  // Рендерим розмітку в залежності від значень у стані
-  const { contacts, isLoading, error } = useSelector(getContacts);
-  const query = useSelector(getFilter);
+  const { contacts, isLoading, error } = useSelector(selectContacts);
+  const query = useSelector(selectFilter);
   const visibleContacts = getVisibleContacts(contacts, query);
-  // console.log(useSelector(state => state));
   return (
     <>
       {isLoading && <p>Loading tasks...</p>}

@@ -1,51 +1,30 @@
 import axios from 'axios';
-import {
-  fetchingAddError,
-  fetchingAddSuccess,
-  fetchingDeleteError,
-  fetchingDeleteSuccess,
-  fetchingError,
-  fetchingInProgress,
-  fetchingSuccess,
-} from './contactsSlise';
 
 axios.defaults.baseURL = 'https://64632c7d7a9eead6fadf02c2.mockapi.io';
 
-export const fetchContacts = () => async dispatch => {
+export const fetchContacts = async thunkAPI => {
   try {
-    // Індикатор завантаження
-    dispatch(fetchingInProgress());
-    // HTTP-запит
     const response = await axios.get('/contacts');
-    // Обробка даних
-    dispatch(fetchingSuccess(response.data));
+    return response.data;
   } catch (e) {
-    // Обробка помилки
-    dispatch(fetchingError(e.message));
+    return thunkAPI.rejectWithValue(e.message);
   }
 };
 
-export const fetchAddContact = contact => async dispatch => {
+export const fetchAddContact = async (contact, thunkAPI) => {
   try {
-    // HTTP-запит
     const response = await axios.post('/contacts', contact);
-    // Обробка даних
-    console.log(response.data);
-    dispatch(fetchingAddSuccess(response.data));
+    return response.data;
   } catch (e) {
-    // Обробка помилки
-    dispatch(fetchingAddError(e.message));
+    return thunkAPI.rejectWithValue(e.message);
   }
 };
 
-export const fetchDeleteContact = id => async dispatch => {
+export const fetchDeleteContact = async (id, thunkAPI) => {
   try {
-    // HTTP-запит
     const response = await axios.delete(`/contacts/${id}`);
-    // Обробка даних
-    dispatch(fetchingDeleteSuccess(response.data));
+    return response.data;
   } catch (e) {
-    // Обробка помилки
-    dispatch(fetchingDeleteError(e.message));
+    return thunkAPI.rejectWithValue(e.message);
   }
 };

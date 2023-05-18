@@ -1,13 +1,12 @@
 import { useDispatch } from 'react-redux';
-// import { deleteContacts } from 'redux/contactsSlise';
 import { MdClose } from 'react-icons/md';
 import css from './Contact.module.css';
-import { fetchDeleteContact } from 'redux/operations';
+import { fetchDeleteContactThunks } from 'redux/thunks';
 
 export const Contact = ({ contact }) => {
   const dispatch = useDispatch();
   const onDelete = () => {
-    dispatch(fetchDeleteContact(contact.id));
+    dispatch(fetchDeleteContactThunks(contact.id));
   };
 
   return (
