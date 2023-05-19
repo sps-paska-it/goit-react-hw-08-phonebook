@@ -1,17 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Contact } from 'components/Contact/Contact';
-import { selectContacts, selectFilter } from '../../redux/selectors';
+import { selectContactsAll, selectContactsFiter } from '../../redux/selectors';
 import css from './ContactsList.module.css';
 import { Message } from 'components/Message/Message';
 import { useEffect } from 'react';
 import { fetchContactsThunks } from 'redux/thunks';
-
-const getVisibleContacts = (contacts, query) => {
-  const normalizedFilter = query.toLowerCase();
-  return contacts.filter(contact =>
-    contact.name.toLowerCase().includes(normalizedFilter)
-  );
-};
 
 export const ContactsList = () => {
   const dispatch = useDispatch();
@@ -19,9 +12,10 @@ export const ContactsList = () => {
   useEffect(() => {
     dispatch(fetchContactsThunks());
   }, [dispatch]);
-  const { contacts, isLoading, error } = useSelector(selectContacts);
-  const query = useSelector(selectFilter);
-  const visibleContacts = getVisibleContacts(contacts, query);
+
+  const visibleContacts = useSelector(selectContactsFiter);
+  const { contacts, isLoading, error } = useSelector(selectContactsAll);
+
   return (
     <>
       {isLoading && <p>Loading tasks...</p>}

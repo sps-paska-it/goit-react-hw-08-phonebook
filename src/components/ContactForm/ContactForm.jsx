@@ -10,7 +10,7 @@ import { fetchAddContactThunks } from 'redux/thunks';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const { contacts } = useSelector(selectContacts);
+  const contacts = useSelector(selectContacts);
 
   const handleSubmit = event => {
     event.preventDefault();
