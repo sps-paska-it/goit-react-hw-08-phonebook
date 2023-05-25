@@ -5,8 +5,8 @@ import { nanoid } from 'nanoid';
 import { TbUserSearch } from 'react-icons/tb';
 import css from './Filter.module.css';
 
-import { selectFilter } from '../../redux/selectors';
-import { setFilter } from 'redux/filterSlise';
+import { selectFilter } from 'redux/filter/selectors';
+import { setFilter } from 'redux/filter/filterSlise';
 
 export const Filter = () => {
   const filter = useSelector(selectFilter);

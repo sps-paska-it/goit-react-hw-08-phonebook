@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { MdClose } from 'react-icons/md';
 import css from './Contact.module.css';
-import { fetchDeleteContactThunks } from 'redux/thunks';
+import { fetchDeleteContactThunks } from 'redux/contacts/thunks';
 
 export const Contact = ({ contact }) => {
   const dispatch = useDispatch();

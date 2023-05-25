@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/contacts/selectors';
 
 import { nanoid } from 'nanoid';
 import css from './ContactForm.module.css';
 import { toast } from 'react-toastify';
 
 import { Button } from 'components/Button/Button';
-import { fetchAddContactThunks } from 'redux/thunks';
+import { fetchAddContactThunks } from 'redux/contacts/thunks';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
