@@ -2,11 +2,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
 
 import { nanoid } from 'nanoid';
-import css from './ContactForm.module.css';
 import { toast } from 'react-toastify';
 
 import { Button } from 'components/Button/Button';
 import { fetchAddContactThunks } from 'redux/contacts/thunks';
+import { FormStyled, InputStyled, LabelStyled } from './ContactForm.styled';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -31,12 +31,9 @@ export const ContactForm = () => {
   const numberId = nanoid();
 
   return (
-    <form className={css.form} onSubmit={handleSubmit}>
-      <label className={css.label} htmlFor={nameId}>
-        Name
-      </label>
-      <input
-        className={css.field}
+    <FormStyled onSubmit={handleSubmit}>
+      <LabelStyled htmlFor={nameId}>Name</LabelStyled>
+      <InputStyled
         id={nameId}
         type="text"
         name="name"
@@ -46,11 +43,8 @@ export const ContactForm = () => {
         autoComplete="off"
         required
       />
-      <label className={css.label} htmlFor={numberId}>
-        Number
-      </label>
-      <input
-        className={css.field}
+      <LabelStyled htmlFor={numberId}>Number</LabelStyled>
+      <InputStyled
         id={numberId}
         type="tel"
         name="number"
@@ -61,6 +55,6 @@ export const ContactForm = () => {
         required
       />
       <Button type="submit">Add contacts</Button>
-    </form>
+    </FormStyled>
   );
 };
