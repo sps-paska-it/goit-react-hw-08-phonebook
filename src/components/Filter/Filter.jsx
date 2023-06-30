@@ -2,11 +2,15 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 
 import { nanoid } from 'nanoid';
-import { TbUserSearch } from 'react-icons/tb';
-import css from './Filter.module.css';
 
 import { selectFilter } from 'redux/filter/selectors';
 import { setFilter } from 'redux/filter/filterSlise';
+import {
+  DivStyled,
+  InputStyled,
+  LabelStyled,
+  SvgStyled,
+} from './Filter.styled';
 
 export const Filter = () => {
   const filter = useSelector(selectFilter);
@@ -18,12 +22,9 @@ export const Filter = () => {
   };
 
   return (
-    <div className={css.wrapper}>
-      <label className={css.labelf} htmlFor={filterId}>
-        Find contacts by me
-      </label>
-      <input
-        className={css.fieldf}
+    <DivStyled>
+      <LabelStyled htmlFor={filterId}>Find contacts by me</LabelStyled>
+      <InputStyled
         id={filterId}
         type="text"
         name="filter"
@@ -36,7 +37,7 @@ export const Filter = () => {
         autoComplete="off"
         onChange={onHandleChangeFilter}
       />
-      <TbUserSearch className={css.svg} />
-    </div>
+      <SvgStyled />
+    </DivStyled>
   );
 };

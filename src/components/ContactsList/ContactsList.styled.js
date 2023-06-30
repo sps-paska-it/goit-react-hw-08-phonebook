@@ -10,7 +10,7 @@ export const UlStyled = styled.ul`
 `;
 
 export const LiStyled = styled.li`
-  &:not(:first-child) {
+  :not(:first-child) {
     border-top: 1px solid #fe6b8b;
   }
 `;
