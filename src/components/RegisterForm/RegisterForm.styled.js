@@ -39,4 +39,10 @@ export const InputStyled = styled.input`
 export const ButtonStyled = styled.button`
   display: block;
   margin-left: 150px;
+  height: 25px;
+  &:hover,
+  &:focus {
+    background-color: #1976d2;
+    color: #000;
+  }
 `;

@@ -12,4 +12,9 @@ export const PStyled = styled.p`
 
 export const ButtonStyled = styled.button`
   margin-right: 12px;
+  &:hover,
+  &:focus {
+    background-color: #1976d2;
+    color: #000;
+  }
 `;
