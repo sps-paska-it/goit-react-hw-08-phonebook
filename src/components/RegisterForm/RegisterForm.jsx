@@ -1,6 +1,12 @@
+import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
-import css from './RegisterForm.module.css';
+import {
+  ButtonStyled,
+  FormStyled,
+  InputStyled,
+  LabelStyled,
+} from './RegisterForm.styled';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -18,21 +24,19 @@ export const RegisterForm = () => {
     form.reset();
   };
 
+  const usernameId = nanoid();
+  const emailId = nanoid();
+  const passwordId = nanoid();
+
   return (
-    <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
-      <label className={css.label}>
-        Username
-        <input type="text" name="name" />
-      </label>
-      <label className={css.label}>
-        Email
-        <input type="email" name="email" />
-      </label>
-      <label className={css.label}>
-        Password
-        <input type="password" name="password" />
-      </label>
-      <button type="submit">Register</button>
-    </form>
+    <FormStyled onSubmit={handleSubmit} autoComplete="off">
+      <LabelStyled htmlFor={usernameId}>Username</LabelStyled>
+      <InputStyled id={usernameId} type="text" name="name" />
+      <LabelStyled htmlFor={emailId}>Email</LabelStyled>
+      <InputStyled id={emailId} type="email" name="email" />
+      <LabelStyled htmlFor={passwordId}>Password</LabelStyled>
+      <InputStyled id={passwordId} type="password" name="password" />
+      <ButtonStyled type="submit">Register</ButtonStyled>
+    </FormStyled>
   );
 };

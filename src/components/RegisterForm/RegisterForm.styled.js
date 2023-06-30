@@ -10,12 +10,10 @@ export const FormStyled = styled.form`
 
 export const LabelStyled = styled.label`
   display: block;
-  width: 65px;
   margin-bottom: 5px;
   margin-left: 10px;
   color: #fe6b53;
   user-select: none;
-  cursor: pointer;
 `;
 
 export const InputStyled = styled.input`
@@ -36,4 +34,9 @@ export const InputStyled = styled.input`
     outline: none;
     border: 1px solid #fe6b53;
   }
+`;
+
+export const ButtonStyled = styled.button`
+  display: block;
+  margin-left: 150px;
 `;

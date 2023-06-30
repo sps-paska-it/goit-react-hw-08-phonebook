@@ -13,10 +13,12 @@ export const DivStyled = styled.div`
 
 export const LabelStyled = styled.label`
   display: block;
+  width: 150px;
   margin-bottom: 5px;
   margin-left: 10px;
   color: #fe6b8b;
   user-select: none;
+  cursor: pointer;
 `;
 
 export const InputStyled = styled.input`
@@ -29,13 +31,15 @@ export const InputStyled = styled.input`
   margin-bottom: 0 auto 15px auto;
   padding-left: 10px;
   color: #fe6b8b;
-  ::placeholder {
-    color: #bdbdbd;
-    padding-left: 5px;
-  }
+
   :focus {
     outline: none;
     border: 1px solid #fe6b8b;
+  }
+
+  ::placeholder {
+    color: #bdbdbd;
+    padding-left: 5px;
   }
 `;
 
