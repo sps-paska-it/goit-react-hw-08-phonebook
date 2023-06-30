@@ -2,10 +2,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Contact } from 'components/Contact/Contact';
 import { selectContactsAll } from 'redux/contacts/selectors';
 import { selectContactsFiter } from 'redux/filter/selectors';
-import css from './ContactsList.module.css';
 import { Message } from 'components/Message/Message';
 import { useEffect } from 'react';
 import { fetchContactsThunks } from 'redux/contacts/thunks';
+import { LiStyled, UlStyled } from './ContactsList.styled';
 
 export const ContactsList = () => {
   const dispatch = useDispatch();
@@ -24,13 +24,13 @@ export const ContactsList = () => {
       {contacts.length === 0 ? (
         <Message message={"You don't have any contact added"} />
       ) : (
-        <ul className={css.list}>
+        <UlStyled>
           {visibleContacts.map(contact => (
-            <li className={css.listItem} key={contact.id}>
+            <LiStyled key={contact.id}>
               <Contact contact={contact} />
-            </li>
+            </LiStyled>
           ))}
-        </ul>
+        </UlStyled>
       )}
     </>
   );
