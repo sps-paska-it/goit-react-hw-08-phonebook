@@ -22,7 +22,9 @@ const handleFulfilledCreat = (state, { payload }) => {
 };
 
 const handleFulfilledDelete = (state, { payload }) => {
-  state.contacts = state.contacts.filter(contact => contact.id !== payload.id);
+  state.contacts = state.contacts.filter(
+    contact => contact._id !== payload._id
+  );
   state.error = null;
 };
 
