@@ -21,14 +21,14 @@ export const ContactForm = () => {
       toast(`${name} is already in contacts`);
       return;
     }
-    const number = form.elements.number.value.trim();
-    const contact = { name, number };
+    const phone = form.elements.phone.value.trim();
+    const contact = { name, phone };
     dispatch(fetchAddContactThunks(contact));
     form.reset();
   };
 
   const nameId = nanoid();
-  const numberId = nanoid();
+  const phoneId = nanoid();
 
   return (
     <FormStyled onSubmit={handleSubmit}>
@@ -43,11 +43,11 @@ export const ContactForm = () => {
         autoComplete="off"
         required
       />
-      <LabelStyled htmlFor={numberId}>Number</LabelStyled>
+      <LabelStyled htmlFor={phoneId}>Number</LabelStyled>
       <InputStyled
-        id={numberId}
+        id={phoneId}
         type="tel"
-        name="number"
+        name="phone"
         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         placeholder="+38 099 01 010 01"

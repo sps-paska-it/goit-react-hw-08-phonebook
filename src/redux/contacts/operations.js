@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const fetchContacts = async thunkAPI => {
   try {
-    const response = await axios.get('/contacts');
+    const response = await axios.get('/contacts/');
     return response.data;
   } catch (e) {
     return thunkAPI.rejectWithValue(e.message);
@@ -11,7 +11,7 @@ export const fetchContacts = async thunkAPI => {
 
 export const fetchAddContact = async (contact, thunkAPI) => {
   try {
-    const response = await axios.post('/contacts', contact);
+    const response = await axios.post('/contacts/', contact);
     return response.data;
   } catch (e) {
     return thunkAPI.rejectWithValue(e.message);

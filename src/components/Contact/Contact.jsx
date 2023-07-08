@@ -6,13 +6,13 @@ import { ButtonStyled, DivStyled, PStyled } from './Contacts.styled';
 export const Contact = ({ contact }) => {
   const dispatch = useDispatch();
   const onDelete = () => {
-    dispatch(fetchDeleteContactThunks(contact.id));
+    dispatch(fetchDeleteContactThunks(contact._id));
   };
 
   return (
     <DivStyled>
       <PStyled>{contact.name}</PStyled>
-      <PStyled>{contact.number}</PStyled>
+      <PStyled>{contact.phone}</PStyled>
       <ButtonStyled type="button" onClick={onDelete}>
         <MdClose size={24} />
       </ButtonStyled>

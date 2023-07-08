@@ -9,6 +9,7 @@ import { fetchContactsThunks } from 'redux/contacts/thunks';
 import { selectIsLoading } from 'redux/contacts/selectors';
 import { Filter } from 'components/Filter/Filter';
 import { H1Styled, H2Styled } from './Contacts.styled';
+import { Loader } from 'components/Snipper/Snipper';
 
 export default function Contacts() {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ export default function Contacts() {
       <ContactForm />
       <H2Styled>Contacts</H2Styled>
       <Filter />
-      <div>{isLoading && 'Request in progress...'}</div>
+      <Loader loading={isLoading} />
       <ContactsList />
       <ToastContainer />
     </>

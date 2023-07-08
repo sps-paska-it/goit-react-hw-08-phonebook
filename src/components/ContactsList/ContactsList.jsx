@@ -6,6 +6,7 @@ import { Message } from 'components/Message/Message';
 import { useEffect } from 'react';
 import { fetchContactsThunks } from 'redux/contacts/thunks';
 import { LiStyled, UlStyled } from './ContactsList.styled';
+import { Loader } from 'components/Snipper/Snipper';
 
 export const ContactsList = () => {
   const dispatch = useDispatch();
@@ -19,14 +20,14 @@ export const ContactsList = () => {
 
   return (
     <>
-      {isLoading && <p>Loading tasks...</p>}
+      {<Loader loading={isLoading} />}
       {error && <p>{error}</p>}
       {contacts.length === 0 ? (
         <Message message={"You don't have any contact added"} />
       ) : (
         <UlStyled>
           {visibleContacts.map(contact => (
-            <LiStyled key={contact.id}>
+            <LiStyled key={contact._id}>
               <Contact contact={contact} />
             </LiStyled>
           ))}

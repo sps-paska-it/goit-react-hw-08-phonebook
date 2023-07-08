@@ -12,7 +12,6 @@ const handlePending = state => {
 const handleFulfilledGet = (state, { payload }) => {
   state.isLoading = false;
   state.contacts = payload;
-  console.log(state);
   state.error = null;
 };
 
