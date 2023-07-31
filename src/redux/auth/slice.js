@@ -13,6 +13,11 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    changeRegister(state, action) {
+      state.verify = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(register.fulfilled, (state, { payload }) => {
@@ -56,3 +61,5 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
+
+export const { changeRegister } = authSlice.actions;

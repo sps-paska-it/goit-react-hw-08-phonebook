@@ -7,11 +7,16 @@ export const H2styled = styled.h2`
 
 export const PStyled = styled.p`
   text-align: center;
-  margin: 25px auto;
+  margin: 25px auto 0;
   max-width: 500px;
+`;
+
+export const ImgStyled = styled.img`
+  width: 150px;
+  margin: 25px auto 0;
 `;
 
 export const ButtonStyled = styled.button`
   display: block;
-  margin: 0 auto;
+  margin: 25px auto 0;
 `;
